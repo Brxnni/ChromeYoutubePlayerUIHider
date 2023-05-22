@@ -34,7 +34,9 @@ async function getUserSettings(){
 }
 
 function toggleVisibility(){
-	let elements = getAllElementsByXPath(globalThis.playerUIXPath);
+	let elements = getAllElementsByXPath(globalThis.UIXPath);
+	elements = elements.concat(getAllElementsByXPath(globalThis.FullscreenUIXPath));
+
 	let newValue = visible ? "hidden" : "visible";
 	visible = !visible;
 
