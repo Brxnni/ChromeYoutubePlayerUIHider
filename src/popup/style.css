@@ -33,3 +33,29 @@ img.inline {
 	user-select: none;
 	-webkit-user-drag: none;
 }
+
+div:has(button#toggle){
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+button#toggle {
+	width: 4.5em;
+	height: 4.5em;
+	margin: 0 auto;
+
+	border: none;
+	outline: none;
+	
+	background-color: transparent;
+	background-size: cover;
+}
+
+button#toggle:hover {
+	cursor: pointer;
+	filter: drop-shadow(0px 0px 3px black);
+}
+
+button#toggle.yes { background-image: url(./../img/yes.png); }
+button#toggle.no { background-image: url(./../img/no.png); }

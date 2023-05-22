@@ -16,10 +16,6 @@
 		"tabs"
 	],
 
-	"action": {
-		"default_popup": "popup/index.html"
-	},
-
 	"content_scripts": [{
 		"js": [
 			"lib.js",
@@ -29,5 +25,9 @@
 	}],
 	"background": {
 		"service_worker": "background.js"
+	},
+
+	"action": {
+		"default_popup": "popup/index.html"
 	}
 }

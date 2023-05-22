@@ -1,18 +1,20 @@
 function addKeyboardListener(){
-
-	let url = location.href;
-	if (url.match(globalThis.youtubeURLRegex)){
-
-		// Inject key listener (fuck you google chrome hotkey api, you suck)
-		window.onkeydown = function (event){
-			// Check if event matches up with event in settings and if so, toggleVisivility()
-			for (let property of globalThis.eventMatchingProperties){
-				if (event[property] !== hotkey[property]) return;
-			}
-
-			toggleVisibility();
+	// Inject key listener (fuck you google chrome hotkey api, you suck)
+	window.onkeydown = function (event){
+		// Check if event matches up with event in settings and if so, toggleVisivility()
+		for (let property of globalThis.eventMatchingProperties){
+			if (event[property] !== hotkey[property]) return;
 		}
+
+		toggleVisibility();
+		chrome.runtime.sendMessage({ type: "toggle" })
 	}
+}
+
+function addMessageListener(){
+	chrome.runtime.onMessage.addListener(function (req, sender, response){
+		if (req.type === "toggle") toggleVisibility();
+	})
 }
 
 function getAllElementsByXPath(xpath){
@@ -34,6 +36,9 @@ async function getUserSettings(){
 }
 
 function toggleVisibility(){
+	let url = location.href;
+	if (!url.match(globalThis.youtubeURLRegex)) return;
+
 	let elements = getAllElementsByXPath(globalThis.UIXPath);
 	elements = elements.concat(getAllElementsByXPath(globalThis.FullscreenUIXPath));
 
@@ -67,4 +72,5 @@ function toggleVisibility(){
 (async function(){
 	await getUserSettings();
 	addKeyboardListener();
+	addMessageListener();
 })();
