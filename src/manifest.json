@@ -3,22 +3,22 @@
 	"name": "YoutubePlayerUIHider",
 	"description": "Hides the UI of the YouTube player, for example to take screenshots. (Default Hotkey: Ctrl+I)",
 	"version": "0.1",
-	"~~~thisisacommentinjson~~~": {
-		"icons": {
-			"16": "img/icon_16.png",
-			"32": "img/icon_32.png",
-			"48": "img/icon_48.png",
-			"128": "img/icon_128.png"
-		},
-		"action": {
-			"default_popup": "popup/index.html"
-		}
+
+	"icons": {
+		"16": "img/icon_16.png",
+		"32": "img/icon_32.png",
+		"48": "img/icon_48.png",
+		"128": "img/icon_128.png"
 	},
 
 	"permissions": [
 		"storage",
 		"tabs"
 	],
+
+	"action": {
+		"default_popup": "popup/index.html"
+	},
 
 	"content_scripts": [{
 		"js": [

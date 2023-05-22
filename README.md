@@ -7,5 +7,4 @@ Preview: (Left: Normal, Right: Extension used)
 
 ## TODO
 
-* Add Icons
-* Add popup with settings etc.
+* Add ~~popup~~ with settings etc.
